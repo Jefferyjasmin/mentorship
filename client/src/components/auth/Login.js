@@ -16,16 +16,11 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    componentDidMount();
-  }, []);
-  const componentDidMount = () => {
-    if (auth) {
-      history.push("/dashboard");
-    }
-  };
+    componentWillReceiveProps();
+  }, [auth]);
 
-  const componentWillReceiveProps = (data) => {
-    if (data) {
+  const componentWillReceiveProps = () => {
+    if (auth) {
       history.push("/dashboard");
     }
   };
@@ -37,7 +32,7 @@ const Login = () => {
     };
 
     dispatch(loginUser(userData));
-    componentWillReceiveProps(auth);
+
     console.log("auth log", auth);
     console.log("Login User", userData);
   };
