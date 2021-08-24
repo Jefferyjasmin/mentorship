@@ -60,7 +60,7 @@ function App() {
           <Route exact path="/post/:id">
             <Post />
           </Route>
-          <Switch></Switch>
+
           <Route exact path="/profile/:handle">
             <ProfileContainer />
           </Route>

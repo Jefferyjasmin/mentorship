@@ -1,13 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import { withRouter } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import InputFieldGroup from "../../common/InputFieldGroup";
-
+import jwt_decode from "jwt-decode";
 import TextAreaFieldGroup from "../../common/TextAreaFieldGroup";
 import TextFieldGroup from "../../common/TextFieldGroup";
-import { createProfile } from "../../../actions/profileAction";
+import {
+  createProfile,
+  getCurrentProfile,
+} from "../../../actions/profileAction";
+import { loginUser, setCurrentUser } from "../../../actions/authActions";
+import setAuthToken from "../../../utils/setAuthToken";
 
 const Createprofile = ({ history }) => {
   // const state = useSelector((state) => state.auth.isAuthenticated);
@@ -21,30 +26,23 @@ const Createprofile = ({ history }) => {
   const [status, setStatus] = useState("");
   const [githubusername, setGithubusername] = useState("");
   const [bio, setBio] = useState("");
+
   const [twitter, setTwitter] = useState("");
   const [facebook, setFacebook] = useState("");
   const [instagram, setInstagram] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [youtube, setYoutube] = useState("");
   const [skills, setSkills] = useState("");
-
+  const auth = useSelector((state) => state.auth.isAuthenticated);
   const [info, setInfo] = useState("");
-
-  // const [profileState, setProfileState] = useState({
-  //   handle: "",
-  //   company: "",
-  //   website: "",
-  //   location: "",
-  //   status: "",
-  //   githubusername: "",
-  //   bio: "",
-  //   twitter: "",
-  //   facebook: "",
-  //   linkedin: "",
-  //   youtube: "",
-  //   info: "",
-  //   instagram: "",
-  // });
+  const componentDidMount = () => {
+    if (auth) {
+      dispatch(getCurrentProfile());
+    }
+  };
+  useEffect(() => {
+    componentDidMount();
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();

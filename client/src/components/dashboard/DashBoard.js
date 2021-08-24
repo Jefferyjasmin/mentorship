@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileAction";
 import PropTypes from "prop-types";
@@ -8,9 +8,11 @@ import Experience from "./Experience";
 
 import { ProfileActions } from "./ProfileActions";
 import Education from "./Education";
+
 const DashBoard = () => {
+  let history = useHistory();
   const dispatch = useDispatch();
-  const userProfile = useSelector((state) => state.profile.profile);
+
   const auth = useSelector((state) => state.auth);
   const profileState = useSelector((state) => state.profile);
   console.log("profile state", profileState);
@@ -25,6 +27,9 @@ const DashBoard = () => {
 
   const onDeleteClick = (e) => {
     dispatch(deleteAccount());
+  };
+  const createprofile = (e) => {
+    history.push("/createprofile");
   };
 
   let dashboardContent;
@@ -55,9 +60,9 @@ const DashBoard = () => {
         <div>
           <p className="lead text-muted"> Welcome {user.name}</p>
           <p>You haven't Created a profile lets get started </p>
-          <Link to="/createprofile " className="btn btn-lg btn-dark">
+          <button onClick={createprofile} className="btn btn-lg btn-dark">
             Create Profile
-          </Link>
+          </button>
         </div>
       );
     }
