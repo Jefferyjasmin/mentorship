@@ -15,7 +15,7 @@ import {
 export const getProfiles = () => (dispatch) => {
   dispatch(setProfileLoading());
   axios
-    .get("/api/profile/all")
+    .get("http://localhost:5000/api/profile/all")
     .then((res) =>
       dispatch({
         type: GET_PROFILES,
@@ -33,7 +33,7 @@ export const getProfiles = () => (dispatch) => {
 export const getCurrentProfile = () => (dispatch) => {
   dispatch(setProfileLoading());
   axios
-    .get("/api/profile")
+    .get("http://localhost:5000/api/profile")
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -52,7 +52,7 @@ export const getProfileByHandle = (handle) => (dispatch) => {
   dispatch(setProfileLoading());
 
   axios
-    .get(`/api/profile/handle/${handle}`)
+    .get(`http://localhost:5000/api/profile/handle/${handle}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -71,7 +71,7 @@ export const getProfileByHandle = (handle) => (dispatch) => {
 
 export const createProfile = (proData, history) => (dispatch) => {
   axios
-    .post("/api/profile", proData)
+    .post("http://localhost:5000/api/profile", proData)
     .then(() => history.push("/dashboard"))
     .catch((err) =>
       dispatch({
