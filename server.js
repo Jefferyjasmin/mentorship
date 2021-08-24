@@ -27,6 +27,15 @@ mongoose
 // Passport middleware
 app.use(express.json());
 app.use(passport.initialize());
+const { createProxyMiddleware } = require("http-proxy-middleware");
+
+module.exports = function (app) {
+  app.use(
+    createProxyMiddleware(["/api/users", , "/api/profile", "/api/posts"], {
+      target: "http://localhost:5000",
+    })
+  );
+};
 
 // Passport Config
 require("./config/passport")(passport);
