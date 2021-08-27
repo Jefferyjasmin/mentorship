@@ -14,7 +14,7 @@ const initialState = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action) {
-  console.log("actions coming in ===>>>", action);
+  console.log("actions coming in ===>>>", { action });
   switch (action.type) {
     case ADD_POST:
       return { ...state, posts: [action.payload, ...state.posts] };
