@@ -10,12 +10,13 @@ import {
   GET_CURRENT_USER,
   GET_PROFILES,
 } from "./type";
-
+const proxyApi = " http://localhost:5000";
+// ${proxyApi}
 //GET ALL PROFILES
 export const getProfiles = () => (dispatch) => {
   dispatch(setProfileLoading());
   axios
-    .get("/api/profile/all")
+    .get(`${proxyApi}/api/profile/all`)
     .then((res) =>
       dispatch({
         type: GET_PROFILES,
@@ -33,7 +34,7 @@ export const getProfiles = () => (dispatch) => {
 export const getCurrentProfile = () => (dispatch) => {
   dispatch(setProfileLoading());
   axios
-    .get("/api/profile")
+    .get(`${proxyApi}/api/profile`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -52,7 +53,7 @@ export const getProfileByHandle = (handle) => (dispatch) => {
   dispatch(setProfileLoading());
 
   axios
-    .get(`/api/profile/handle/${handle}`)
+    .get(`${proxyApi}/api/profile/handle/${handle}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,
@@ -71,7 +72,7 @@ export const getProfileByHandle = (handle) => (dispatch) => {
 
 export const createProfile = (proData, history) => (dispatch) => {
   axios
-    .post("/api/profile", proData)
+    .post(`${proxyApi}/api/profile`, proData)
     .then(() => history.push("/dashboard"))
     .catch((err) =>
       dispatch({
@@ -90,7 +91,7 @@ export const setProfileLoading = () => {
 
 export const addExperience = (expData, history) => (dispatch) => {
   axios
-    .post("/api/profile/experience", expData)
+    .post(`${proxyApi}/api/profile/experience`, expData)
     .then((res) => history.push("/dashboard"))
     .catch((err) =>
       dispatch({
@@ -102,7 +103,7 @@ export const addExperience = (expData, history) => (dispatch) => {
 
 export const addEducation = (eduData, history) => (dispatch) => {
   axios
-    .post("/api/profile/education", eduData)
+    .post(`${proxyApi}/api/profile/education`, eduData)
     .then((res) => history.push("/dashboard"))
     .catch((err) =>
       dispatch({
@@ -116,7 +117,7 @@ export const addEducation = (eduData, history) => (dispatch) => {
 export const deleteAccount = () => (dispatch) => {
   if (window.confirm("Are you sure?  this can not be undone")) {
     axios
-      .delete("/api/profile")
+      .delete(`${proxyApi}/api/profile`)
       .then((res) =>
         dispatch({
           type: GET_CURRENT_USER,
@@ -137,7 +138,7 @@ export const deleteAccount = () => (dispatch) => {
 // Delete one Experience
 export const deleteExperience = (id) => (dispatch) => {
   axios
-    .delete(`/api/profile/experience/${id}`)
+    .delete(`${proxyApi}/api/profile/experience/${id}`)
     .then((res) => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch((err) =>
       dispatch({
@@ -146,9 +147,10 @@ export const deleteExperience = (id) => (dispatch) => {
       })
     );
 };
+
 export const deleteEducation = (id) => (dispatch) => {
   axios
-    .delete(`/api/profile/education/${id}`)
+    .delete(`${proxyApi}/api/profile/education/${id}`)
     .then((res) => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch((err) =>
       dispatch({

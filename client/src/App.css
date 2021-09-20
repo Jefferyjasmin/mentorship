@@ -8,8 +8,9 @@ img {
 
 .landing {
   position: relative;
-  background: url("./img/IMG_0829.jpg") no-repeat;
-  background-size: contain;
+  background: url("https://images.ctfassets.net/e5mq1t8pfsum/4p8EhNzZvW2el1LFw0079E/1ae7a3f947c5aa6bc193466f4b0dfbb3/Webp.net-resizeimage__10_.jpg?w=720&fm=jpg&fl=progressive")
+    no-repeat;
+  background-size: cover;
   background-position: center;
   margin-top: -24px;
   margin-bottom: -50px;
