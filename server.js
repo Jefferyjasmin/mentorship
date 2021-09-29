@@ -8,14 +8,16 @@ const passport = require("passport");
 const cors = require("cors");
 const path = require("path");
 const app = express();
+require("dotenv").config();
+
 // Body parser middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB config
-const db = require("./config/keys_dev.js");
-db = db.mongoURI;
+const db = require("./config/keys_dev").mongoURI;
+
 // connet to mongodb
 mongoose
   .connect(db, {
