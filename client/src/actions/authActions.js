@@ -5,7 +5,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
 // eslint-disable-next-line no-unused-vars
-const proxyApi = " http://localhost:5000";
+
 // ${proxyApi}
 export const registerUser = (userData, history) => (dispatch) => {
   axios
@@ -23,7 +23,7 @@ export const registerUser = (userData, history) => (dispatch) => {
 
 export const loginUser = (userData) => (dispatch) => {
   axios
-    .post(`${proxyApi}/api/users/login`, userData)
+    .post("/api/users/login", userData)
     .then((res) => {
       // saving token to local storage:
       const { token } = res.data;
