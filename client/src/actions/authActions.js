@@ -9,7 +9,7 @@ const proxyApi = " http://localhost:5000";
 // ${proxyApi}
 export const registerUser = (userData, history) => (dispatch) => {
   axios
-    .post(`${proxyApi}/api/users/register`, userData)
+    .post("/api/users/register", userData)
     .then(() => history.push("/login"))
     .catch((err) =>
       dispatch({

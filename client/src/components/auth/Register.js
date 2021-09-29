@@ -40,7 +40,7 @@ const Register = ({ history }) => {
   };
 
   return (
-    <div className="register">
+    <div className="register" style={{ height: "80vh" }}>
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
