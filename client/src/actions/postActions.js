@@ -8,11 +8,11 @@ import {
   GET_POST,
   DELETE_POST_COMMENT,
 } from "./type";
-const proxyApi = " http://localhost:5000";
+// const proxyApi = " http://localhost:5000";
 // ${proxyApi}
 export const addPost = (postData) => (dispatch) => {
   axios
-    .post(`${proxyApi}/api/posts`, postData)
+    .post("/api/posts", postData)
 
     .then((res) =>
       dispatch({
@@ -32,7 +32,7 @@ export const addPost = (postData) => (dispatch) => {
 export const getPosts = () => (dispatch) => {
   setPostsLoading();
   axios
-    .get(`${proxyApi}/api/posts`)
+    .get("/api/posts")
     .then((res) =>
       dispatch({
         type: GET_POSTS,
@@ -59,7 +59,7 @@ export const setPostsLoading = () => {
 //Set Loading State
 export const deletePosts = (id) => (dispatch) => {
   axios
-    .delete(`${proxyApi}/api/posts/${id}`)
+    .delete("/api/posts/:id")
     .then(
       dispatch({
         type: DELETE_POST,
@@ -78,7 +78,7 @@ export const deletePosts = (id) => (dispatch) => {
 
 export const addLike = (id) => (dispatch) => {
   axios
-    .post(`${proxyApi}/api/posts/like/${id}`)
+    .post("/api/posts/like/:id")
     .then((res) => dispatch(getPosts()))
     .catch((err) =>
       dispatch({
@@ -92,7 +92,7 @@ export const addLike = (id) => (dispatch) => {
 
 export const removeLike = (id) => (dispatch) => {
   axios
-    .post(`${proxyApi}/api/posts/unlike/${id}`)
+    .post("/api/posts/unlike/:id")
     .then((res) => dispatch(getPosts()))
     .catch((err) =>
       dispatch({
@@ -106,7 +106,7 @@ export const removeLike = (id) => (dispatch) => {
 export const getPost = (id) => (dispatch) => {
   setPostsLoading();
   axios
-    .get(`${proxyApi}/api/posts/${id}`)
+    .get("/api/posts/:id")
     .then((res) =>
       dispatch({
         type: GET_POST,
@@ -124,11 +124,11 @@ export const getPost = (id) => (dispatch) => {
 
 //addComment request
 
-export const addComment = (commentData, postId) => (dispatch) => {
+export const addComment = (postId, commentData) => (dispatch) => {
   setPostsLoading();
 
   axios
-    .post(`${proxyApi}/api/posts/comment/${postId}`, commentData)
+    .post("/api/posts/comment/:postId", commentData)
     .then((res) =>
       dispatch({
         type: GET_POST,
@@ -147,7 +147,7 @@ export const addComment = (commentData, postId) => (dispatch) => {
 //Set Loading State
 export const deleteComment = (postId, commentId) => (dispatch) => {
   axios
-    .delete(`${proxyApi}/api/posts/comment/${postId}/${commentId}`)
+    .delete("/api/posts/comment/:postId/:commentId")
     .then((res) =>
       dispatch({
         type: GET_POST,
