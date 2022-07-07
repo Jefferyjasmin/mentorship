@@ -1,16 +1,28 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 import { logOutUser } from "../../actions/authActions";
 import { clearCurrentProfile } from "../../actions/profileAction";
-
+import "./NavBar.css";
+import { Dropdown } from "bootstrap";
 const NavBar = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.auth);
-
+  const [active, setActive] = useState("unActive");
+  const [unActive, setUnActive] = useState("");
   const { isAuthenticated, user } = state;
+  let dropDown = () => {
+    if (active === "unActive") {
+      setActive("active");
+    }
+  };
 
+  let dropBack = () => {
+    if (active === "active") {
+      setUnActive("UnActive");
+      setActive("unActive");
+    }
+  };
   const onLogoutClick = (e) => {
     e.preventDefault();
     dispatch(clearCurrentProfile());
@@ -72,13 +84,43 @@ const NavBar = () => {
         <Link to="/" className="navbar-brand" href="www.g">
           Mentorship
         </Link>
+
         <button
           className="navbar-toggler"
+          onClick={active === "active" ? (e) => dropBack() : (e) => dropDown()}
           type="button"
           data-toggle="collapse"
           data-target="#mobile-nav"
         >
           <span className="navbar-toggler-icon"></span>
+          <div className={`navbar-toggler-drop ${active} ${unActive}`}>
+            <ul
+              style={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "column",
+                listStyle: "none",
+              }}
+            >
+              <li>
+                <Link className="nav-link" to="/profiles">
+                  Developers
+                </Link>
+              </li>{" "}
+              <li>
+                {" "}
+                <Link to="/register" className="nav-link">
+                  Sign up
+                </Link>
+              </li>{" "}
+              <li>
+                {" "}
+                <Link to="/login" className="nav-link">
+                  Login
+                </Link>
+              </li>
+            </ul>
+          </div>
         </button>
         <div
           className="collapse navbar-collapse"
