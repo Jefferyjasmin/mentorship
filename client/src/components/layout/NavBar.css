@@ -14,21 +14,19 @@ transform: translateX(0);
 }
  
 .navbar-toggler-drop{
-    height: 100vh;
-    width: 100vw;
-    color: white;
-    position: absolute;
-    top: 53px;
-    right: 3px;
-    z-index: 100;
-    background: rgb(8, 6, 6);
-    opacity: 0.9;
-      
+height: 100vh;
+width: 100vw;
+color: white;
+position: absolute;
+top: 58px;
+right: 0;
+z-index: 100;
+background: rgb(8, 6, 6);
+opacity: 0.9;
 }
+
+
 .navbar-toggler-drop ul{
-display: flex;
-    width: 100%;
-    flex-direction: column;
     list-style: none;
 }
 

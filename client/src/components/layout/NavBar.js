@@ -94,14 +94,7 @@ const NavBar = () => {
         >
           <span className="navbar-toggler-icon"></span>
           <div className={`navbar-toggler-drop ${active} ${unActive}`}>
-            <ul
-              style={{
-                display: "flex",
-                width: "100%",
-                flexDirection: "column",
-                listStyle: "none",
-              }}
-            >
+            <ul className="navbar-toggler-items">
               <li>
                 <Link className="nav-link" to="/profiles">
                   Developers
