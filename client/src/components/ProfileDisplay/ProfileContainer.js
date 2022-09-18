@@ -12,16 +12,15 @@ import NotFound from "../../not-found/NotFound";
 const ProfileContainer = ({ match }) => {
   // let history = useHistory();
   const { handle } = useParams();
-  const userProfile = useSelector((state) => state.profile);
   const dispatch = useDispatch();
-  const { profile, loading } = userProfile;
-
   useEffect(() => {
     if (handle) {
       dispatch(getProfileByHandle(handle));
     }
   }, []);
-
+  const userProfile = useSelector((state) => state.profile);
+  const { profile, loading } = userProfile;
+  console.log("hello", userProfile);
   // React.useEffect(() => {
   //   return () => {
   //     if (profile === null && loading) {
@@ -59,7 +58,6 @@ const ProfileContainer = ({ match }) => {
 
   return (
     <div className="profile">
-      container
       <div className="container">
         <div className="row">
           <div className="col-md-12">{profileContent}</div>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../common/Spinner";
+import { useParams, Link } from "react-router-dom";
 import { getProfiles } from "../../actions/profileAction";
 import ProfileItems from "../profile/ProfileItems";
 

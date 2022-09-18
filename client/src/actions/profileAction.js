@@ -53,7 +53,7 @@ export const getProfileByHandle = (handle) => (dispatch) => {
   dispatch(setProfileLoading());
 
   axios
-    .get("/api/profile/handle/:handle")
+    .get(`/api/profile/handle/${handle}`)
     .then((res) =>
       dispatch({
         type: GET_PROFILE,

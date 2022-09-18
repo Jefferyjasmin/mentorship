@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import isEmpty from "../../validation/is-empty";
+import isEmpty from "../../validation/is-empty"; 
 
 const ProfileItems = ({ profile }) => {
   // const profiles = useSelector((state) => state.profile.profiles);
@@ -26,7 +26,10 @@ const ProfileItems = ({ profile }) => {
               <span> {profile.location} </span>
             )}
           </p>
-          <Link to={`profile/${profile.handle}`} className="btn btn-info">
+          <Link
+            to={`profile/handle/${profile.handle}`}
+            className="btn btn-info"
+          >
             View Profile
           </Link>
         </div>

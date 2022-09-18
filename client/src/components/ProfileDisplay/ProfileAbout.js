@@ -15,11 +15,11 @@ const ProfileAbout = ({ profile }) => {
       <div className="col-md-12">
         <div className="card card-body bg-light md-3">
           <h3 className="text-center text-info"> {firstName} Bio</h3>
-          <p className="lead">
+          <p className="lead" style={{ textAlign: "center" }}>
             {isEmpty(profile.bio) ? (
               <span>{firstName} does not have a bio</span>
             ) : (
-              <span>{profile.bio}</span>
+              <span style={{ textAlign: "center" }}>{profile.bio}</span>
             )}
           </p>
           <hr />

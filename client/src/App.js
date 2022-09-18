@@ -61,7 +61,7 @@ function App() {
             <Post />
           </Route>
 
-          <Route exact path="/profile/:handle">
+          <Route exact path="/profile/handle/:handle">
             <ProfileContainer />
           </Route>
           <Switch>
